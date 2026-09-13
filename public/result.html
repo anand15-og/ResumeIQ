@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResumeIQ - Executive ATS & Skill Benchmark Report</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body class="results-page">
+    <main class="page-shell">
+      <div class="top-nav">
+        <a class="back-link" href="/">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back To Analyzer
+        </a>
+        <div class="top-nav-actions">
+          <button id="download-button" class="action-btn secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            Print / Save PDF
+          </button>
+        </div>
+      </div>
+
+      <header class="hero result-hero-copy">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span id="report-eyebrow">Executive Assessment</span>
+        </div>
+        <h1 id="report-title">Resume & ATS Match Report</h1>
+        <p class="subtitle">
+          Comprehensive score breakdown, STAR-method bullet optimizations, and keyword compliance audit.
+        </p>
+      </header>
+
+      <section class="result-page-card">
+        <div id="result-page-output" class="result-shell"></div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>ResumeIQ • Built for Production & Technical Portfolio Evaluation</p>
+    </footer>
+
+    <script src="/analysis-renderer.js"></script>
+    <script src="/result.js"></script>
+  </body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ResumeIQ - AI Resume & ATS Analyzer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="hero">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Next-Gen AI Resume & ATS Intelligence</span>
+        </div>
+        <h1>ResumeIQ Analyzer</h1>
+        <p class="subtitle">
+          Benchmark your resume against target roles with deep LLM scoring, STAR bullet point optimization, and actionable ATS compliance audits.
+        </p>
+      </header>
+
+      <!-- 1-Click Demo Presets for Quick Testing & Presentations -->
+      <section class="preset-banner" aria-label="1-Click Demo Presets">
+        <div class="preset-banner-title">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <strong>1-Click Demo Presets:</strong>
+        </div>
+        <div class="preset-buttons">
+          <button type="button" class="preset-btn" id="preset-fullstack">
+            💻 Full-Stack Engineer
+          </button>
+          <button type="button" class="preset-btn" id="preset-data">
+            📊 Data Scientist / ML
+          </button>
+          <button type="button" class="preset-btn" id="preset-cloud">
+            ☁️ Cloud / DevOps
+          </button>
+          <button type="button" class="preset-btn secondary" id="preset-clear">
+            ✕ Clear
+          </button>
+        </div>
+      </section>
+
+      <!-- Main Interaction Shell -->
+      <section class="card" id="analyzer-card">
+        <form id="analyzer-form" class="analyzer-form">
+          <div class="field" id="dropzone-container">
+            <label class="field-label" for="resume">Resume Document (.pdf or .txt)</label>
+            <div id="dropzone" class="dropzone">
+              <div class="dropzone-content">
+                <div class="dropzone-icon-ring">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="upload-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                </div>
+                <div class="dropzone-instructions">
+                  <strong>Click to browse</strong> or drag & drop your resume
+                  <small>PDF or Plain Text (up to 8MB)</small>
+                </div>
+              </div>
+              <input
+                id="resume"
+                name="resume"
+                type="file"
+                accept=".pdf,.txt"
+              />
+            </div>
+            <div id="uploaded-file" class="uploaded-file hidden" aria-live="polite">
+              <div class="uploaded-file-info">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                <span id="uploaded-file-name">filename.pdf</span>
+              </div>
+              <button id="change-file-button" class="change-file-btn" type="button">
+                Change
+              </button>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field flex-1">
+              <label class="field-label" for="analysis-mode">Analysis Engine</label>
+              <select id="analysis-mode" name="analysisMode">
+                <option value="gemini">Google Gemini AI (Deep Reasoning & STAR Rewrites)</option>
+                <option value="groq">Groq LLaMA-3 (Ultra-Fast Inference)</option>
+                <option value="manual">Local Heuristic Engine (Pure Python / Offline)</option>
+              </select>
+              <small class="hint" id="mode-hint">
+                AI engines provide STAR bullet rewrites and deep ATS checklists. Local engine operates offline.
+              </small>
+            </div>
+          </div>
+
+          <div class="field">
+            <div class="field-header-row">
+              <label class="field-label" for="job-description">Target Job Description (Optional)</label>
+              <span class="field-aux-tag">Recommended for Role Match</span>
+            </div>
+            <textarea
+              id="job-description"
+              name="jobDescription"
+              rows="8"
+              placeholder="Paste the target job description or requirements here for custom role-match scoring... Leave blank to run a standalone ATS Readiness Audit."
+            ></textarea>
+          </div>
+
+          <div class="field checkbox-field">
+            <label class="checkbox-container">
+              <input type="checkbox" id="tier1-booster" name="tier1Booster" />
+              <span class="checkbox-custom"></span>
+              <span class="checkbox-text">
+                <strong>Simulate Tier-1 University Recognition</strong>
+                <small>Tests ATS algorithmic weighting for premier educational institutions</small>
+              </span>
+            </label>
+          </div>
+
+          <button id="submit-button" type="submit" class="primary-submit-btn">
+            <span id="submit-button-text">Analyze Resume</span>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </form>
+
+        <section class="status-panel">
+          <div class="panel-header">
+            <h2>Analysis Dashboard</h2>
+            <div id="status-chip" class="status-chip ready">Ready</div>
+          </div>
+          <div id="status-output" class="result-shell">
+            <div class="result-placeholder">
+              <div class="placeholder-icon">📋</div>
+              <h3>Ready to Benchmark</h3>
+              <p>
+                Upload your resume above or choose one of our 1-click presets to generate your real-time ATS match score, STAR bullet rewrites, and skill gap report.
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Dedicated In-Page Full Results Container (replaces card view on complete) -->
+      <section id="inline-report-container" class="inline-report-container hidden">
+        <div class="report-top-bar">
+          <button type="button" id="return-to-form-btn" class="action-btn secondary">
+            ← Edit Input / Re-analyze
+          </button>
+          <div class="report-top-actions">
+            <a id="open-standalone-link" href="#" target="_blank" class="action-btn secondary">
+              Open Standalone Report ↗
+            </a>
+          </div>
+        </div>
+        <div id="inline-report-output" class="result-page-card"></div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <p>ResumeIQ • Built for Production & Technical Portfolio Evaluation</p>
+    </footer>
+
+    <script src="/analysis-renderer.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

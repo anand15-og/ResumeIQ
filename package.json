@@ -1,0 +1,13 @@
+{
+  "name": "resumeiq",
+  "version": "1.0.0",
+  "description": "AI-powered resume analyzer and ATS optimization engine",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "pdf-parse": "^1.1.1"
+  }
+}
